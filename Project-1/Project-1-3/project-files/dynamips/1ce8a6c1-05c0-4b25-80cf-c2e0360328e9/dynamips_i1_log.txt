@@ -1,0 +1,23 @@
+Jan 03 21:44:18.425 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+Jan 03 21:44:18.425 HYPERVISOR: Started on IP = localhost, TCP port = 54152.
+Jan 03 21:44:18.635 HYPERVISOR: exec_cmd: hypervisor version 
+Jan 03 21:44:18.636 HYPERVISOR: exec_cmd: hypervisor working_dir C:\MPeterson\OneDrive - Universidade de Aveiro\Desktop\AGR\ArquiteturaDeRedes\Project-1\Project-1-3\project-files\dynamips 
+Jan 03 21:44:18.639 GENERAL: working_dir=C:\MPeterson\OneDrive - Universidade de Aveiro\Desktop\AGR\ArquiteturaDeRedes\Project-1\Project-1-3\project-files\dynamips
+Jan 03 21:44:18.639 HYPERVISOR: exec_cmd: hypervisor working_dir C:\MPeterson\OneDrive - Universidade de Aveiro\Desktop\AGR\ArquiteturaDeRedes\Project-1\Project-1-3\project-files\dynamips\fe7afe3a-ce9a-4259-9798-b55534566054 
+Jan 03 21:44:18.640 GENERAL: working_dir=C:\MPeterson\OneDrive - Universidade de Aveiro\Desktop\AGR\ArquiteturaDeRedes\Project-1\Project-1-3\project-files\dynamips\fe7afe3a-ce9a-4259-9798-b55534566054
+Jan 03 21:44:18.640 HYPERVISOR: exec_cmd: vm create Router2 2 c3725 
+Jan 03 21:44:18.641 VM: VM Router2 created.
+Jan 03 21:44:18.641 HYPERVISOR: exec_cmd: vm set_con_tcp_port Router2 5004 
+Jan 03 21:44:18.642 HYPERVISOR: exec_cmd: c3725 get_mac_addr Router2 
+Jan 03 21:44:18.642 HYPERVISOR: exec_cmd: vm set_disk0 Router2 0 
+Jan 03 21:44:18.642 HYPERVISOR: exec_cmd: vm set_exec_area Router2 64 
+Jan 03 21:44:18.643 HYPERVISOR: exec_cmd: vm set_ios Router2 C:/Users/Peterson Neves Filho/GNS3/images/IOS/c3725-advipservicesk9-mz.124-21.image 
+Jan 03 21:44:18.643 HYPERVISOR: exec_cmd: c3725 set_mac_addr Router2 c202.6c3c.0000 
+Jan 03 21:44:18.644 HYPERVISOR: exec_cmd: vm set_nvram Router2 256 
+Jan 03 21:44:23.490 HYPERVISOR: exec_cmd: vm get_status Router2 
+Jan 03 21:44:23.492 HYPERVISOR: exec_cmd: vm extract_config Router2 
+Jan 03 21:44:23.496 HYPERVISOR: exec_cmd: vm delete Router2 
+Jan 03 21:44:23.496 VM: VM Router2 destroyed.
+Jan 03 21:44:23.498 HYPERVISOR: exec_cmd: hypervisor stop 
+Jan 03 21:44:23.725 HYPERVISOR: Stopped.
+Jan 03 21:44:23.725 GENERAL: reset done.

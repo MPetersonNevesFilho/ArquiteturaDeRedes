@@ -1,0 +1,20 @@
+ROUTER 1 Config:
+
+enable
+conf t
+int f0/0
+ipv6 enable
+ipv6 address 2100:A:A::254/64
+end
+show ipv6 int brief
+write
+
+enable
+conf t
+int f0/0
+ip address 210.10.10.254 255.255.255.252
+no shutdown
+end
+show ip interface brief
+write
+
