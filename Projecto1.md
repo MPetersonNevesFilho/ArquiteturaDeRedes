@@ -147,6 +147,12 @@
 
 
 ### router 3
+* IP configure
+
+        conf t
+        interface fe1/0
+        ip address 191.1.1.253 255.255.255.252
+
 * RIP
 
         conf t 
