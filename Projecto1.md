@@ -5,7 +5,6 @@
         vlan 1
         vlan 2
         vlan 3
-        vlan 4
         exit
         config t
 
@@ -25,32 +24,17 @@
         switchport mode trunk
         switchport trunk encapsulation dot1q
 
-        interface vlan 2
+        interface vlan 1
         ip address 195.5.5.98 255.255.255.224
         no autostate
 
-        interface vlan 3 
+        interface vlan 2 
         ip address 195.5.5.2 255.255.255.224
         no autostate
 
-        interface vlan 4
+        interface vlan 3
         ip address 195.5.5.66 255.255.255.224
         no autostate
-
-
-* RIP OU Rota estática
-    * RIP
-
-            version 2
-            router rip
-            network 195.5.5.0
-            no auto-summary
-            end
-
-    * Rota Estatica old building e Site b
-
-            ip route 195.5.5.32/27 195.5.5.33  
-            ip route 195.5.5.128/27 195.5.5.33
 
 * OSPF 
         conf t
@@ -81,7 +65,6 @@
         vlan 1
         vlan 2
         vlan 3
-        vlan 4
         exit
         config t
         ip routing
@@ -98,17 +81,34 @@
         switchport mode trunk
         switchport trunk encapsulation dot1q
 
-        interface vlan 2
+        interface vlan 1
         ip address 195.5.5.97 255.255.255.224
         no autostate
 
-        interface vlan 3 
+        interface vlan 2 
         ip address 195.5.5.1 255.255.255.224
         no autostate
 
-        interface vlan 4
+        interface vlan 3
         ip address 195.5.5.65 255.255.255.224
         no autostate
+
+
+
+* RIP OU Rota estática
+    * RIP
+
+            version 2
+            router rip
+            network 195.5.5.0
+            no auto-summary
+            end
+
+    * Rota Estatica old building e Site b
+
+            ip route 195.5.5.32/27 195.5.5.33  
+            ip route 195.5.5.128/27 195.5.5.33
+
 
 * OSPF 
         router ospf 1
@@ -129,41 +129,5 @@
 
         end 
         write
-
-
-
-### router 2
-
-
-
-### router 3
-
-
-### router 4
-
-
-
-## Managment
-### PC1
-    ip 195.5.5.99 255.255.255.224 195.5.5.97
-
-    
-### PC2
-    ip 195.5.5.100 255.255.255.224 195.5.5.97
-
-## Engineering
-### PC3
-    ip 195.5.5.3 255.255.255.224 195.5.5.1
-
-### PC4 
-    ip 195.5.5.4 255.255.255.224 195.5.5.1
-
-## VOIP
-
-### PC5 
-    ip 195.5.5.67 255.255.255.224 195.5.5.65
-
-### PC6 
-    ip 195.5.5.68 255.255.255.224 195.5.5.65
 
 
