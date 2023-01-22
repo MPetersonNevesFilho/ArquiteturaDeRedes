@@ -101,8 +101,8 @@
 * RIP OU Rota estática
     * RIP
 
-            version 2
             router rip
+            version 2
             network 195.5.5.0
             no auto-summary
             end
@@ -137,11 +137,28 @@
 
 
 ### router 2
+* RIP
 
+        conf t 
+        router rip
+        network 195.5.5.0
+        no auto-summary 
+        
 
 
 ### router 3
+* RIP
 
+        conf t 
+        router rip
+        network 195.5.5.0
+        no auto-summary
+
+
+* Rota Estática 
+ 
+        ip route 195.5.5.128/27 191.1.1.254  
+        
 
 ### router 4
 
