@@ -161,6 +161,13 @@
         
 
 ### router 4
+* config ip
+
+        conf t
+        interface fe0/0
+        ip address 191.1.1.254 255.255.255.252
+        
+
 * rota estática
 
         ip route 195.5.5.92/28 191.1.1.253
