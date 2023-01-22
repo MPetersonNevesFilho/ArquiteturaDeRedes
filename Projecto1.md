@@ -38,6 +38,7 @@
         no autostate
 
 * OSPF 
+
         conf t
         
         router ospf 1
@@ -113,6 +114,7 @@
 
 
 * OSPF 
+
         router ospf 1
 
         network 195.5.5.160 0.0.0.15 area 0
