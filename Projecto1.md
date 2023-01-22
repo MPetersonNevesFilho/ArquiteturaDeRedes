@@ -79,6 +79,7 @@
 
         interface FastEthernet1/10
         ip address 195.5.5.80 255.255.255.240
+        no shutdown
 
         interface range fastethernet 1/13 - 15
         switchport mode trunk
@@ -152,6 +153,7 @@
         conf t
         interface fe1/0
         ip address 191.1.1.253 255.255.255.252
+        no shutdown
 
 * RIP
 
@@ -172,6 +174,7 @@
         conf t
         interface fe0/0
         ip address 191.1.1.254 255.255.255.252
+        no shutdown
         
 
 * rota estática
