@@ -157,6 +157,7 @@
 
 
 ### router 1
+
 * nat/pat
         
         ip nat pool MYNATPOOL 195.5.5.80 195.5.5.85 netmask 255.255.255.240
@@ -174,6 +175,14 @@
         
         interface f1/1
         ip address 195.5.5.196 255.255.255.240
+        no shutdown
+        
+ 
+* Private network IP
+
+        conf t
+        interface ! introduzir a interface certa pls
+        ip address 10.10.0.1 255.255.0.0
         no shutdown
         
         
@@ -315,6 +324,10 @@
 ### PC6 
     ip 195.5.5.68 255.255.255.224 195.5.5.65
 
+
+## Private network PC connected to R1
+
+    ip 10.10.0.2 255.255.0.0 10.10.0.1
 
 
 
