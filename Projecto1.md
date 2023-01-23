@@ -76,6 +76,10 @@
         interface FastEthernet0/1
         ip address 195.5.5.162 255.255.255.240
         no shutdown
+        
+        interface fe1/5
+        ip address 195.5.5.34 255.255.255.240
+        no shutdown
 
         interface FastEthernet1/10
         ip address 195.5.5.80 255.255.255.240
@@ -96,6 +100,7 @@
         interface vlan 4
         ip address 195.5.5.65 255.255.255.224
         no autostate
+        
 
 
 
@@ -161,6 +166,20 @@
 
 
 ### router 2
+* Ip configure
+
+        conf t 
+        interface f0/0
+        ip address 195.5.5.33 255.255.255.224
+        no shutdown
+        
+        
+        interface f1/0
+        ip address 195.5.5.36 255.255.255.224
+        no shutdown
+        
+
+
 * RIP
 
         conf t 
@@ -174,6 +193,10 @@
 * IP configure
 
         conf t
+        interface fe0/0
+        ip address 195.5.5.35 255.255.255.224
+        no shutdown
+
         interface fe1/0
         ip address 191.1.1.253 255.255.255.252
         no shutdown
@@ -239,6 +262,11 @@
 ### PC1
     ip 195.5.5.194 255.255.255.240 195.5.5.193
 
+
+## OLD BUILDING 
+### PC
+
+    ip 195.5.5.36 255.255.255.224 195.5.5.33
 
 ## Managment
 ### PC1
