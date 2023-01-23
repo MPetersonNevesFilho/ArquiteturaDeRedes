@@ -135,7 +135,7 @@
         end 
         write
 
-### router 3
+### router 1
 * nat/pat
         
         ip nat pool MYNATPOOL 195.5.5.80 195.5.5.85 netmask 255.255.255.240
