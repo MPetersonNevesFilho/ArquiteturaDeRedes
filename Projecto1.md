@@ -147,6 +147,17 @@
         ip nat inside
         interface f1/1
         ip nat outside
+        
+        
+* DMZ IP
+
+
+
+        conf t
+        interface fe1/1
+        ip address 195.5.5.193 255.255.255.240	
+        no shutdown 
+        
 
 
 ### router 2
@@ -187,6 +198,13 @@
         interface fe0/0
         ip address 191.1.1.254 255.255.255.252
         no shutdown
+ 
+* site b
+
+        conf t 
+        interface fe1/0
+        ip address 195.5.5.129 255.255.255.224
+        no shutdown
         
 
 * rota estática
@@ -210,6 +228,17 @@
 
     ip 195.5.5.164 255.255.255.240 195.5.5.161
     
+    
+## SITE B 
+
+### PC
+    ip 195.5.5.130 255.255.255.224 195.5.5.129
+    
+## DMZ
+
+### PC1
+    ip 195.5.5.194 255.255.255.240 195.5.5.193
+
 
 ## Managment
 ### PC1
