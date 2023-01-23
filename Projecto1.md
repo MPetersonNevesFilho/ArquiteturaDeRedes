@@ -179,10 +179,10 @@
         
 * DMZ IP
 
-
+        
 
         conf t
-        interface fe1/1
+        interface ! mudar a interface para a certa pls
         ip address 195.5.5.193 255.255.255.240	
         no shutdown 
         
