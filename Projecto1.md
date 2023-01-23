@@ -135,6 +135,18 @@
         end 
         write
 
+### router 3
+* nat/pat
+        
+        ip nat pool MYNATPOOL 195.5.5.80 195.5.5.85 netmask 255.255.255.240
+        access-list 2 permit 10.10.0.0 0.0.0.16
+        ip nat inside source list 2 pool MYNATPOOL overload
+        interface f0/0
+        ip nat inside
+        interface f1/0
+        ip nat inside
+        interface f1/1
+        ip nat outside
 
 
 ### router 2
