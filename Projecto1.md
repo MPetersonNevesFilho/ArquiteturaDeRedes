@@ -191,7 +191,7 @@
         
 
         conf t
-        interface ! mudar a interface para a certa pls
+        interface fe2/0
         ip address 195.5.5.193 255.255.255.240	
         no shutdown 
         
