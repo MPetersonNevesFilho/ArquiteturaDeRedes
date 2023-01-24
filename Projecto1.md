@@ -153,12 +153,14 @@
         conf t
         interface fe0/0
         ip address  100.100.100.2 255.255.255.0
+        ipv6 address 2200:0:0:3::2/64
         no shutdown
   
 * Internet Inside 
         
         interface f1/0
         ip address 195.5.5.195 255.255.255.240
+        ipv6 address 2200:0:0:3::3/64
         no shutdown
 
 ### router 1
