@@ -174,7 +174,6 @@
 				ip address 100.100.100.130 255.255.255.128
 				no shutdown
 
-
 ### router 1
 
 * nat/pat
@@ -191,7 +190,7 @@
         
   
 * Internet outside 
-        
+
 				interface f1/1
 				ip address 100.100.100.131 255.255.255.128
 				no shutdown
