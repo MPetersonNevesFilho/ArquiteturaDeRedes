@@ -101,9 +101,6 @@
         ip address 195.5.5.65 255.255.255.224
         no autostate
         
-
-
-
 * RIP OU Rota estática
     * RIP
 
@@ -117,7 +114,6 @@
 
             ip route 195.5.5.32/27 195.5.5.33  
             ip route 195.5.5.128/27 195.5.5.33
-
 
 * OSPF 
 
@@ -155,7 +151,6 @@
         ip address 195.5.5.195 255.255.255.240
         no shutdown
 
-
 ### router 1
 
 * nat/pat
@@ -169,14 +164,12 @@
         ip nat inside
         interface f1/1
         ip nat outside
-        
   
 * Internet outside 
         
         interface f1/1
         ip address 195.5.5.196 255.255.255.240
         no shutdown
-        
  
 * Private network IP
 
@@ -188,14 +181,10 @@
         
 * DMZ IP
 
-        
-
         conf t
         interface fe2/0
         ip address 195.5.5.193 255.255.255.240	
         no shutdown 
-        
-
 
 ### router 2
 * Ip configure
@@ -205,12 +194,9 @@
         ip address 195.5.5.33 255.255.255.224
         no shutdown
         
-        
         interface f1/0
         ip address 195.5.5.36 255.255.255.224
         no shutdown
-        
-
 
 * RIP
 
@@ -219,8 +205,6 @@
         network 195.5.5.0
         no auto-summary 
         
-
-
 ### router 3
 * IP configure
 
@@ -275,14 +259,11 @@
 ## Datacenter
 
 ### PC1
-
     ip 195.5.5.163 255.255.255.240 195.5.5.161
-
 
 ### PC2
 
     ip 195.5.5.164 255.255.255.240 195.5.5.161
-    
     
 ## SITE B 
 
@@ -294,40 +275,40 @@
 ### PC1
     ip 195.5.5.194 255.255.255.240 195.5.5.193
 
-
 ## OLD BUILDING 
 ### PC
-
     ip 195.5.5.36 255.255.255.224 195.5.5.33
 
 ## Managment
 ### PC1
-    
     ip 195.5.5.99 255.255.255.224 195.5.5.97
-
+    ip 2200:0:0:9::1/64
     
 ### PC2
     ip 195.5.5.100 255.255.255.224 195.5.5.97
+    ip 2200:0:0:A::1/64
 
 ## Engineering
 ### PC3
     ip 195.5.5.3 255.255.255.224 195.5.5.1
+    ip 2200:0:0:B::1/64
 
 ### PC4 
     ip 195.5.5.4 255.255.255.224 195.5.5.1
+    ip 2200:0:0:C::1/64
 
 ## VOIP
 
 ### PC5 
     ip 195.5.5.67 255.255.255.224 195.5.5.65
+    ip 2200:0:0:D::1/64
 
 ### PC6 
     ip 195.5.5.68 255.255.255.224 195.5.5.65
+    ip 2200:0:0:E::1/64
 
+### PC9
+    ip 2200:0:0:AA::1/64
 
 ## Private network PC connected to R1
-
     ip 10.10.0.2 255.255.0.0 10.10.0.1
-
-
-
