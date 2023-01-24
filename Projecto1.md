@@ -192,10 +192,12 @@
         conf t 
         interface f0/0
         ip address 195.5.5.33 255.255.255.224
+        ipv6 address 2200:0:0:6::1/64
         no shutdown
         
         interface f1/0
         ip address 195.5.5.36 255.255.255.224
+        ipv6 address 2200:0:0:6::2/64
         no shutdown
 
 * RIP
@@ -211,10 +213,12 @@
         conf t
         interface fe0/0
         ip address 195.5.5.35 255.255.255.224
+        ipv6 address 2200:0:0:7::1/64
         no shutdown
 
         interface fe1/0
         ip address 191.1.1.253 255.255.255.252
+        ipv6 address 2200:0:0:7::2/64
         no shutdown
 
 * RIP
@@ -236,6 +240,7 @@
         conf t
         interface fe0/0
         ip address 191.1.1.254 255.255.255.252
+        ipv6 address 2200:0:0:8::1/64
         no shutdown
  
 * site b
@@ -243,6 +248,7 @@
         conf t 
         interface fe1/0
         ip address 195.5.5.129 255.255.255.224
+        ipv6 address 2200:0:0:8::2/64
         no shutdown
         
 
