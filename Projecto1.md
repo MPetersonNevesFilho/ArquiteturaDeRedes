@@ -146,13 +146,13 @@
 
         conf t
         interface fe0/0
-        ip address  100.100.100.2 255.255.255.0
+        ip address  100.100.100.2 255.255.255.128
         no shutdown
   
 * Internet Inside 
         
         interface f1/0
-        ip address 195.5.5.195 255.255.255.240
+        ip address 100.100.100.130 255.255.255.128
         no shutdown
 
 
@@ -174,7 +174,7 @@
 * Internet outside 
         
         interface f1/1
-        ip address 195.5.5.196 255.255.255.240
+        ip address 100.100.100.131 255.255.255.128
         no shutdown
         
  
