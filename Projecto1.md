@@ -1,351 +1,44 @@
 ### ESW1
 * vlans
 
-        vlan database
-        vlan 1
-        vlan 2
-        vlan 3
-        vlan 4
-        exit
-        config t
-
-        ip routing
-
-
-        ! Datacenter routing
-        interface FastEthernet0/1
-        ip address 195.5.5.161 255.255.255.240
-        no shutdown
-
-        interface Fastethernet 1/10
-				no switchport
-        ip address 195.5.5.79 255.255.255.240
-        no shutdown
-
-				switchport mode access
-				switchport access vlan 2
-				interface f1/7
-
-				switchport mode access
-				switchport access vlan 3
-				interface f1/8
-
-				switchport mode access
-				switchport access vlan 4
-				interface f1/9				
-
-        interface range fastethernet 1/13 - 15
-        switchport mode trunk
-        switchport trunk encapsulation dot1q
-
-        interface vlan 2
-        ip address 195.5.5.98 255.255.255.224
-        no autostate
-
-        interface vlan 3 
-        ip address 195.5.5.2 255.255.255.224
-        no autostate
-
-        interface vlan 4
-        ip address 195.5.5.66 255.255.255.224
-        no autostate
-
-* OSPF 
-
-				conf t
-
-				router ospf 1
-
-				network 195.5.5.160 0.0.0.15 area 0
-
-				network 195.5.5.64 0.0.0.31 area 0
-
-				network 195.5.5.0 0.0.0.31 area 0
-
-				network 195.5.5.96 0.0.0.31 area 0
-
-				network 195.5.5.32 0.0.0.31 area 0
-
-				network 195.5.5.192 0.0.0.15 area 0
-
-				network 195.5.5.128 0.0.0.31 area 0
-
-				end
-				write
-
-### ESW2 
-* vlan 
-
-				vlan database
-				vlan 1
-				vlan 2
-				vlan 3
-				vlan 4
-				exit
-				config t
-				ip routing
-
-				! data center routing
-				interface FastEthernet0/1
-				ip address 195.5.5.162 255.255.255.240
-				no shutdown
-
-				interface f1/5
-				no switchport
-				ip address 191.1.1.129 255.255.255.252
-				no shutdown
-
-				interface FastEthernet1/10
-				no switchport
-				ip address 195.5.5.80 255.255.255.240
-				no shutdown
-
-				interface range fastethernet 1/13 - 15
-				switchport mode trunk
-				switchport trunk encapsulation dot1q
-
-				interface vlan 2
-				ip address 195.5.5.97 255.255.255.224
-				no autostate
-
-				interface vlan 3 
-				ip address 195.5.5.1 255.255.255.224
-				no autostate
-
-				interface vlan 4
-				ip address 195.5.5.65 255.255.255.224
-				no autostate
-
-				end
-				write
-        
-
-
-
-* RIP OU Rota estática
-    * RIP
-
-				router rip
-				version 2
-				network 195.5.5.0
-				network 191.1.1.128
-				no auto-summary
-				end
-
-    * Rota Estatica old building e Site b
-
-            ip route 195.5.5.32/27 195.5.5.33  
-            ip route 195.5.5.128/27 195.5.5.33
-
-
-* OSPF 
-
-				router ospf 1
-
-				network 195.5.5.160 0.0.0.15 area 0
-
-				network 195.5.5.64 0.0.0.31 area 0
-
-				network 195.5.5.0 0.0.0.31 area 0
-
-				network 195.5.5.96 0.0.0.31 area 0
-
-				network 195.5.5.32 0.0.0.31 area 0
-
-				network 195.5.5.128 0.0.0.31 area 0
-
-				network 195.5.5.192 0.0.0.15 area 0
-
-				end 
-				write
-
-### ISP
-
-* Internet IP
-
-				conf t
-				interface f0/0
-				ip address  100.100.100.2 255.255.255.128
-				no shutdown
-  
-* Internet Inside 
-        
-				interface f1/0
-				ip address 100.100.100.130 255.255.255.128
-				no shutdown
-
-### router 1
-
-* nat/pat
-        
-				ip nat pool MYNATPOOL 195.5.5.80 195.5.5.85 netmask 255.255.255.240
-				access-list 2 permit 10.10.0.0 0.0.0.16
-				ip nat inside source list 2 pool MYNATPOOL overload
-				interface f0/0
-				ip nat inside
-				interface f1/0
-				ip nat inside
-				interface f1/1
-				ip nat outside
-        
-  
-* Internet outside 
-
-				interface f1/1
-				ip address 100.100.100.131 255.255.255.128
-				no shutdown
-        
- 
-* Private network IP
-
-        conf t
-        interface f2/1
-        ip address 10.10.0.1 255.255.0.0
-        no shutdown
-        
-        
-* DMZ IP
-
-        conf t
-        interface f2/0
-        ip address 195.5.5.193 255.255.255.240	
-        no shutdown 
-        
-
-
-### router 2
-* Ip configure
-
-        conf t 
-        interface f0/0
-        ip address 191.1.1.130 255.255.255.252
-        no shutdown
-        
-        
-        interface f1/0
-        ip address 195.5.5.36 255.255.255.224
-        no shutdown
-        
-
-
-* RIP
-
-        conf t 
-        router rip
-        network 195.5.5.0
-				network 191.1.1.128
-        no auto-summary 
-        
-
-
-### router 3
-* IP configure
-
-        conf t
-        interface f0/0
-        ip address 195.5.5.35 255.255.255.224
-        no shutdown
-
-        interface f1/0
-        ip address 191.1.1.253 255.255.255.252
-        no shutdown
-
-* RIP
-
-        conf t 
-        router rip
-        network 195.5.5.0
-				network 191.1.1.128
-        no auto-summary
-
-
-* Rota Estática 
- 
-        ip route 195.5.5.128 255.255.255.224 191.1.1.254  
-        
-
-### router 4
-* config ip
-
-        conf t
-        interface f0/0
-        ip address 191.1.1.254 255.255.255.252
-        no shutdown
- 
-* site b
-
-        conf t 
-        interface f1/0
-        ip address 195.5.5.129 255.255.255.224
-        no shutdown
-        
-
-* rota estática
-
-        ip route 195.5.5.92 255.255.255.240 191.1.1.253
-        ip route 195.5.5.64 255.255.255.224 191.1.1.253
-        ip route 195.5.5.0 255.255.255.224 191.1.1.253
-        ip route 195.5.5.96 255.255.255.224 191.1.1.253
-        ip route 195.5.5.160 255.255.255.240 191.1.1.253
-        ip route 195.5.5.32 255.255.255.224 191.1.1.253
-        ip route 100.100.100.0 255.255.255.0 191.1.1.253
-
-## Datacenter
-
-### PC1
-
-    ip 195.5.5.163 255.255.255.240 195.5.5.161
-
-
-### PC2
-
-    ip 195.5.5.164 255.255.255.240 195.5.5.161
-    
-    
-## SITE B 
-
-### PC (PC 8)
-    ip 195.5.5.130 255.255.255.224 195.5.5.129
-    
-## DMZ
-
-### PC1 (PC 7)
-    ip 195.5.5.194 255.255.255.240 195.5.5.193
-
-
-## OLD BUILDING 
-### PC ( ainda nao tem no diagrama )
-
-    ip 195.5.5.36 255.255.255.224 195.5.5.33
-
-## Managment
-### PC1
-    
-    ip 195.5.5.99 255.255.255.224 195.5.5.97
-
-    
-### PC2
-    ip 195.5.5.100 255.255.255.224 195.5.5.97
-
-## Engineering
-### PC3
-    ip 195.5.5.3 255.255.255.224 195.5.5.1
-
-### PC4 
-    ip 195.5.5.4 255.255.255.224 195.5.5.1
-
-## VOIP
-
-### PC5 
-    ip 195.5.5.67 255.255.255.224 195.5.5.65
-
-### PC6 
-    ip 195.5.5.68 255.255.255.224 195.5.5.65
-
-
-## Private network PC connected to R1 (PC 9)
-
-    ip 10.10.0.2 255.255.0.0 10.10.0.1
-
-
-
+	vlan database
+	vlan 1
+	vlan 2
+	vlan 3
+	vlan 4
+	
+	ip routing 
+	interface f1/0
+	switchport mode access
+	switchport access vlan 1
+	interface range fastEthernet 1/5 - 7
+	switchport mode access
+	switchport access vlan 2
+	interface range fastEthernet 1/8 - 10 
+	switchport mode access               
+	switchport access vlan 3             
+	interface range fastEthernet 1/11 - 13
+	switchport mode access                
+	switchport access vlan 4              
+	interface range fastEthernet 1/13 - 15
+	switchport mode trunk
+	switchport trunk encapsulation dot1q
+	exit
+	
+	interface vlan 2
+	ip address 10.10.1.2 255.255.255.0
+	no autostate
+	interface Vlan 3
+	ip address 195.5.5.2 255.255.255.224
+	no autostate
+	interface Vlan 4
+	ip address 10.10.2.2 255.255.255.0 
+	no autostate 
+	exit 
+	
+	end 
+	write
+
+	
+	
+	
