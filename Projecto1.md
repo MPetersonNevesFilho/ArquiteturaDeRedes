@@ -1,4 +1,4 @@
-### L3SWA
+## L3SWA
 * vlans
 
 		vlan database
@@ -53,9 +53,20 @@
 		end
 		write
 
-		
 
-### L3SWB
+* connection to router 1
+
+		conf t
+		interface f1/0
+		no switchport
+		ip address 10.10.0.5 255.255.255.252
+		no shutdown 
+		exit
+		
+		end
+		write
+
+## L3SWB
 
 * vlans
 
@@ -111,7 +122,36 @@
 		
 		end
 		write
+		
 
+* connection to router 1
+
+		conf t
+		interface f1/0
+		no switchport
+		ip address 10.10.0.2 255.255.255.252
+		no shutdown 
+		exit
+		
+		end
+		write
+		
+		
+## Router 1
+		
+		conf t
+		interface f1/0
+		ip address 10.10.0.6 255.255.255.252
+		no shutdown
+		exit
+		
+		interface f1/1
+		ip address 10.10.0.1 255.255.255.252
+		no shutdown
+		exit
+		
+		end
+		write
 
 ## PCS
 
