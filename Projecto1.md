@@ -6,7 +6,9 @@
 		vlan 2
 		vlan 3
 		vlan 4
+		exit
 		
+		conf t
 		ip routing 
 		interface f1/0
 		switchport mode access
@@ -48,7 +50,9 @@
 		vlan 2
 		vlan 3
 		vlan 4
+		exit
 		
+		conf t
 		ip routing 
 		interface f1/0
 		switchport mode access
