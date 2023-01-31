@@ -150,6 +150,11 @@
 		no shutdown
 		exit
 		
+		interface f2/0
+		ip address 195.5.5.193	255.255.255.240
+		no shutdown
+		exit
+		
 		end
 		write
 
@@ -176,4 +181,8 @@
 * PC1
 
 		ip 195.5.5.165 255.255.255.240 195.5.5.161
+		
+### DMZ
 
+* PC1
+		ip 195.5.5.195 255.255.255.240 195.5.5.193
