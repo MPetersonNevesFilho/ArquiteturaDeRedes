@@ -45,6 +45,7 @@
 
 		conf t
 		interface f0/0
+		no switchport ! to no make it part of any vlan
 		ip address 195.5.5.161 255.255.255.240
 		no shutdown
 		exit
@@ -103,6 +104,7 @@
 
 		conf t
 		interface f0/0
+		no switchport
 		ip address 195.5.5.162 255.255.255.240
 		no shutdown
 		exit
