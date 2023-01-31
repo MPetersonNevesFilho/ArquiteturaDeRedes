@@ -40,6 +40,19 @@
 	
 		end 
 		write
+		
+* Database
+
+		conf t
+		interface f0/0
+		ip address 195.5.5.161 255.255.255.240
+		no shutdown
+		exit
+		
+		end
+		write
+
+		
 
 ### L3SWB
 
@@ -86,7 +99,16 @@
 		write
 
 	
+* Database
 
+		conf t
+		interface f0/0
+		ip address 195.5.5.162 255.255.255.240
+		no shutdown
+		exit
+		
+		end
+		write
 
 
 ## PCS
@@ -107,3 +129,9 @@
 * PC1
 
 		ip 10.10.2.5 255.255.255.0 10.10.2.1
+		
+### Database
+* PC1
+
+		ip 195.5.5.165 255.255.255.240 195.5.5.161
+
