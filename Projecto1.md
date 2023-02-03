@@ -1,7 +1,11 @@
 ## L3SWA
 * vlans
 
+		conf t
 		ipv6 unicast-routing
+		ipv6 router ospf 1
+		exit
+		exit
 
 
 		vlan database
@@ -33,14 +37,17 @@
 		interface vlan 2
 		ip address 10.10.1.2 255.255.255.0
 		ipv6 address 2200:0:0:2::2/64
+		ipv6 ospf 1 area 0
 		no autostate
 		interface Vlan 3
 		ip address 195.5.5.2 255.255.255.224
 		ipv6 address 2200:0:0:3::2/64
+		ipv6 ospf 1 area 0
 		no autostate
 		interface Vlan 4
 		ip address 10.10.2.2 255.255.255.0 
 		ipv6 address 2200:0:0:4::2/64
+		ipv6 ospf 1 area 0
 		no autostate 
 		exit 
 	
@@ -51,6 +58,7 @@
 
 		conf t
 		interface f0/0
+		ipv6 enable
 		no switchport ! to no make it part of any vlan
 		ip address 195.5.5.161 255.255.255.240
 		ipv6 address 2200:0:0:1::2/64
@@ -67,6 +75,7 @@
 
 		conf t
 		interface f1/0
+		ipv6 enable
 		no switchport
 		ip address 10.10.0.5 255.255.255.252
 		ipv6 address 2200:0:0:10::2/64
@@ -74,6 +83,13 @@
 		ip ospf 1 area 0
 		no shutdown 
 		exit
+
+		router ospf 1
+		network 10.10.1.0 255.255.255.0 area 0
+		network 10.10.2.0 255.255.255.0 area 0
+		network 195.5.5.0 255.255.255.224 area 0
+		exit
+
 		
 		end
 		write
@@ -85,6 +101,8 @@
 
 		conf t
 		ipv6 unicast-routing
+		ipv6 router ospf 1
+		exit
 		exit
 
 		vlan database
@@ -116,14 +134,17 @@
 		interface vlan 2
 		ip address 10.10.1.1 255.255.255.0
 		ipv6 address 2200:0:0:2::1/64
+		ipv6 ospf 1 area 0
 		no autostate
 		interface Vlan 3
 		ip address 195.5.5.1 255.255.255.224
 		ipv6 address 2200:0:0:3::1/64
+		ipv6 ospf 1 area 0
 		no autostate
 		interface Vlan 4
 		ip address 10.10.2.1 255.255.255.0
 		ipv6 address 2200:0:0:4::1/64 
+		ipv6 ospf 1 area 0
 		no autostate 
 		exit 
 		
@@ -135,6 +156,7 @@
 
 		conf t
 		interface f0/0
+		ipv6 enable
 		no switchport
 		ip address 195.5.5.162 255.255.255.240
 		ipv6 address 2200:0:0:1::1/64
@@ -151,12 +173,20 @@
 
 		conf t
 		interface f1/0
+		ipv6 enable
 		no switchport
 		ip address 10.10.0.2 255.255.255.252
 		ipv6 address 2200:0:0:9::2/64
 		ipv6 ospf 1 area 0
 		ip ospf 1 area 0
 		no shutdown 
+		exit
+
+
+		router ospf 1
+		network 10.10.1.0 255.255.255.0 area 0
+		network 10.10.2.0 255.255.255.0 area 0
+		network 195.5.5.0 255.255.255.224 area 0
 		exit
 		
 		end
@@ -167,8 +197,11 @@
 		
 		conf t
 		ipv6 unicast-routing
+		ipv6 router ospf 1
+		exit
 		
 		interface f1/0
+		ipv6 enable
 		ip address 10.10.0.6 255.255.255.252
 		ipv6 address 2200:0:0:10::1/64
 		ipv6 ospf 1 area 0
@@ -177,6 +210,7 @@
 		exit
 		
 		interface f1/1
+		ipv6 enable
 		ip address 10.10.0.1 255.255.255.252
 		ipv6 address 2200:0:0:9::1/64
 		ipv6 ospf 1 area 0
@@ -185,6 +219,7 @@
 		exit
 		
 		interface f2/0
+		ipv6 enable
 		ip address 195.5.5.193 255.255.255.240
 		ipv6 address 2200:0:0:0::1/64
 		ipv6 ospf 1 area 0
@@ -201,7 +236,7 @@
 * PC 1
 
 		ip 10.10.1.5 255.255.255.0 10.10.1.1
-		ip 2200:0:0:2:5/64
+		ip 2200:0:0:2::5/64
 
 ### Engineering
 * PC1 
@@ -226,6 +261,6 @@
 
 * PC1
 		ip 195.5.5.195 255.255.255.240 195.5.5.193
-		ip 2200:0:0:0::2/64
+		ip 2200:0:0:0::5/64
 
 
