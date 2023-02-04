@@ -235,7 +235,7 @@
 		redistribute ospf 1 metric 1
 		exit
 		
-		router ospf 
+		router ospf 1
 		redistribute rip
 		redistribute connected 
 		exit
@@ -359,19 +359,57 @@
 		no shutdown
 		exit
 
-		interface f0/0	
+		interface f1/0	
 		ipv6 enable
-		ip address 191.1.1.253/30 
+		ip address 191.1.1.253 255.255.255.252
 		ipv6 address 2200:0:0:8::1/64
 		no shutdown
 		exit
 
+		ip route 195.5.5.128 255.255.255.224 191.1.1.254
 
+
+		router rip
+		redistribute connected
+		redistribute static
+		exit
+		
 		ipv6 router rip RIPNG
 		redistribute connected
 		redistribute static
 		exit
 
+		end
+		write
+
+
+## router 4
+
+		conf t
+		
+		interface f0/0
+		ipv6 enable
+		ip address 191.1.1.254 255.255.255.252
+		ipv6 address 2200:0:0:8::2/64
+		no shutdown
+		exit
+
+		interface f1/0
+		ipv6 enable
+		ip address 195.5.5.129 255.255.255.224
+		ipv6 address 2200:0:0:6::1/64
+		no shutdown
+		exit 	
+
+		ip route 195.5.5.0 255.255.255.224 191.1.1.253
+		ip route 195.5.5.192 255.255.255.240 191.1.1.253
+		ip route 195.5.5.160 255.255.255.240 191.1.1.253
+		ip route 195.5.5.76 255.255.255.240 191.1.1.253
+		ip route 10.10.0.0 255.255.0.0 191.1.1.253
+		ip route 100.100.100.0 255.255.255.0 191.1.1.253
+
+		end 
+		write	
 
 
 
