@@ -211,6 +211,8 @@
 		no switchport
 		ip address 10.10.0.9 255.255.255.252
 		ipv6 address 2200:0:0:7::1/64
+		ipv6 ospf 1 area 0
+		ip ospf 1 area 0
 		ipv6 rip 1 enable
 		no shutdown
 		exit
@@ -275,9 +277,14 @@
 
 
 ## Router 2
+
+
 		conf t
 		ipv6 unicast-routing
-		
+		ipv6 router ospf 1
+		exit
+
+
 		router rip
 		version 2
 		network 195.5.5.32
@@ -289,6 +296,7 @@
 		ip address 10.10.0.10 255.255.255.252
 		ipv6 address 2200:0:0:7::2/64
 		ipv6 rip 1 enable
+		ipv6 ospf 1 area 0
 		no shutdown
 		exit
 
@@ -301,6 +309,20 @@
 		exit
 
 		end
+		write
+
+* redestribute ripng and ospfv3
+
+
+		conf t
+		ipv6 router ospf 1
+		redistribute rip RIPNG
+		exit
+		ipv6 router rip RIPNG
+		redistribute connected 
+		redistribute ospf 1 metric 1
+		exit
+		end 
 		write
 
 
