@@ -199,7 +199,7 @@
 		router rip
 		version 2
 		network 10.10.1.0
-		network 195.5.5.0
+		network 195.5.5.0 
 		network 10.10.2.0
 		network 195.5.5.160
 		network 10.10.0.8
@@ -229,10 +229,22 @@
 		ipv6 router ospf 1
 		redistribute rip RIPNG
 		exit
+		
+		router rip
+		redistribute connected 
+		redistribute ospf 1 metric 1
+		exit
+		
+		router ospf 
+		redistribute rip
+		redistribute connected 
+		exit
+
 		ipv6 router rip RIPNG
 		redistribute connected 
 		redistribute ospf 1 metric 1
 		exit
+		
 		end 
 		write
 
@@ -324,6 +336,43 @@
 		exit
 		end 
 		write
+
+## Router 3
+
+		conf t
+		ipv6 unicast-routing
+		ipv6 router ospf 1
+		exit
+
+		router rip
+		version 2
+		network 195.5.5.32
+		network 191.1.1.252
+		network 195.5.5.128
+		exit
+
+		interface f0/0	
+		ipv6 enable
+		ip address 195.5.5.34 255.255.255.224
+		ipv6 address 2200:0:0:5::1/64
+		ipv6 rip 1 enable
+		no shutdown
+		exit
+
+		interface f0/0	
+		ipv6 enable
+		ip address 191.1.1.253/30 
+		ipv6 address 2200:0:0:8::1/64
+		no shutdown
+		exit
+
+
+		ipv6 router rip RIPNG
+		redistribute connected
+		redistribute static
+		exit
+
+
 
 
 ## PCS
